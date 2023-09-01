@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 function Square() {
-  const [squares, setSquares] = useState(Array(9).fill(null));
+  const [value, setValue] = useState(null);
     function handleClick(){
-      setValue("X");
+      console.log("clicked!");
     }
   return (
   <button 
@@ -21,18 +21,18 @@ export default function Board() {
   return (
   <>
     <div className="board-row">
-      <Square value={squares[0]} />
-      <Square value={squares[1]} />
-      <Square value={squares[2]} />
+      <Square />
+      <Square />
+      <Square />
     </div>
     <div className="board-row">
-      <Square value={squares[3]} />
-      <Square value={squares[4]} />
-      <Square value={squares[5]} />
+      <Square />
+      <Square />
+      <Square />
     </div>
     <div className="board-row">
-      <Square value={squares[6]} />
-      <Square value={squares[7]} />
+      <Square />
+      <Square />
       <Square />
     </div>
   </>
