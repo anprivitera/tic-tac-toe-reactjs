@@ -9,6 +9,7 @@ const root = createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
     <Ciao />
+    <br />
     <App />
   </StrictMode>
 );
