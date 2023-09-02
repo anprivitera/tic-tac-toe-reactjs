@@ -1,7 +1,7 @@
 import { useState } from "react";
 // see https://react.dev/reference/react/useState#usestate
 
-function Square({value, onSquareClick}) { // the function Square takes value and onSquareClick as parameters
+function Square({value, onSquareClick}) { // the function Square takes "value" and "onSquareClick" as parameters
   return <button className="square" onClick={onSquareClick}>
     {value}
     </button>;
@@ -17,10 +17,9 @@ export default function Board() {
     setSquares(nextSquares) // tells React to change the initial state of position 0 in the squares array to "X" through useState
   }
 
-// If I add onSquareClick={handleClick} to each squares, only the first square changes from null to "X". And that's because of line 17.
-
   return (
-  <>
+  <> 
+  {/* Here we are creating three div elements called board-row. In each of the three board-rows we are adding three React elements generated from the function square to form the tic-tac-toe board. Each element takes one array position as value, and the function handleClick as onSquareClick. But even if we add onSquareClick={handleClick} to each squares, still only the first square changes from null to "X". that's because of line 16.  */}
     <div className="board-row">
       <Square value={squares[0]} onSquareClick={handleClick} />
       <Square value={squares[1]} onSquareClick={handleClick} />
