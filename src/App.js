@@ -8,12 +8,12 @@ function Square({value, onSquareClick}) {
 
 export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
-  // the first element in the array is the current state of the board, the second ("setSquares") changes the value based on the function setSquares. Then, there is an array destructuring in which we declare that squares is an array of 9 items, each one with the value of null.
+  // the first element in the array will be the current state of the board, the second ("setSquares") changes the value based on the function setSquares. Through array destructuring, we declare that squares (i.e., the initial state) is an array of 9 items, each one with the value of null.
 
   function handleClick() { // declaring handleClick function
     const nextSquares = squares.slice(); // nextSquares is now a shallow copy of the squares array
-    nextSquares[0] = "X" // the position 0 of the nextSquares array is now string "X"
-    setSquares(nextSquares) // tells React to rerender the board. (??)
+    nextSquares[0] = "X" // the position 0 of the nextSquares array is changed from null to the string "X"
+    setSquares(nextSquares) // tells React to change the initial state of position 0 in the squares array to "X" through useState
   }
 
   return (
