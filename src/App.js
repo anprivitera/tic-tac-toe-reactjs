@@ -8,7 +8,7 @@ function Square({value, onSquareClick}) {
 
 export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
-  // the first element in the array is the current state of the board, the second ("setSquares") changes the value based on the function setSquares.
+  // the first element in the array is the current state of the board, the second ("setSquares") changes the value based on the function setSquares. Then, there is an array destructuring in which we declare that squares is an array of 9 items, each one with the value of null.
 
   function handleClick() { // declaring handleClick function
     const nextSquares = squares.slice(); // nextSquares is now a shallow copy of the squares array
