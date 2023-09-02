@@ -4,8 +4,6 @@ function Square({value}) {
   return <button className="square">{value}</button>;
 }
 
-
-
 export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   return (
