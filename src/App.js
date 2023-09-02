@@ -21,8 +21,8 @@ export default function Board() {
   <> 
   {/* Here we are creating three div elements called board-row. In each of the three board-rows we are adding three React elements generated from the function square to form the tic-tac-toe board. Each element takes one array position as value, and the function handleClick as onSquareClick. */}
     <div className="board-row">
-      <Square value={squares[0]} onSquareClick={handleClick(0)} /> 
-      {/* if I add 0 here, I get the error "Too many re-renders. React limits the number of renders to prevent an infinite loop." */}
+      <Square value={squares[0]} onSquareClick={() => handleClick(0)} /> 
+      {/* now only when the user clicks on the square, the function "handleClick" will be called. And this works!  */}
       <Square value={squares[1]} onSquareClick={handleClick} />
       <Square value={squares[2]} onSquareClick={handleClick} />
     </div>
