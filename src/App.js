@@ -17,24 +17,24 @@ export default function Board() {
     setSquares(nextSquares) // tells React to change the initial state of position 0 in the squares array to "X" through useState
   }
 
-// Right now only upper left square can change to X because we included
+// If I add onSquareClick={handleClick} to each squares, only the first square changes from null to "X". And that's because of line 17.
 
   return (
   <>
     <div className="board-row">
       <Square value={squares[0]} onSquareClick={handleClick} />
-      <Square value={squares[1]} />
-      <Square value={squares[2]} />
+      <Square value={squares[1]} onSquareClick={handleClick} />
+      <Square value={squares[2]} onSquareClick={handleClick} />
     </div>
     <div className="board-row">
-      <Square value={squares[3]} />
-      <Square value={squares[4]} />
-      <Square value={squares[5]} />
+      <Square value={squares[3]} onSquareClick={handleClick} />
+      <Square value={squares[4]} onSquareClick={handleClick} />
+      <Square value={squares[5]} onSquareClick={handleClick} />
     </div>
     <div className="board-row">
-      <Square value={squares[6]} />
-      <Square value={squares[7]} />
-      <Square value={squares[8]} />
+      <Square value={squares[6]} onSquareClick={handleClick} />
+      <Square value={squares[7]} onSquareClick={handleClick} />
+      <Square value={squares[8]} onSquareClick={handleClick} />
     </div>
   </>
   );
