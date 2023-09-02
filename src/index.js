@@ -10,6 +10,8 @@ root.render(
   <StrictMode>
     <Ciao />
     <br />
+    <br />
+    <br />
     <App />
   </StrictMode>
 );
