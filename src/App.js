@@ -8,11 +8,12 @@ function Square({value, onSquareClick}) { // the function Square takes "value" a
 } // the function returns a HTML button element with the class name of Square, which when receving a click in the browser will activate the function "onSquareClick" (declared below). This button element wraps the variable "value".
 
 export default function Board() {
+  const [xIsNext, setXIsNext] = useState(true); // the first element in the array will be the current state, the second alter the state. The initial state is the boolean true.
   const [squares, setSquares] = useState(Array(9).fill(null));
   // the first element in the array will be the current state of the board, the second ("setSquares") changes the value based on the function setSquares. Through array destructuring, we declare that squares (i.e., the initial state) is an array of 9 items, each one with the value of null.
 
   function handleClick(i) { // declaring handleClick function with parameter i
-    const nextSquares = squares.slice(); // nextSquares is now a shallow copy of the squares array
+    const nextSquares = squares.slice(); // nextSquares is now a shallow copy of the squares array. The original array in not touched.
     nextSquares[i] = "X" // the position i of the nextSquares array is changed from null to the string "X"
     setSquares(nextSquares) // tells React to change the initial state of position 0 in the squares array to "X" through useState
   }
