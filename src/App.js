@@ -14,8 +14,13 @@ export default function Board() {
 
   function handleClick(i) { // declaring handleClick function with parameter i
     const nextSquares = squares.slice(); // nextSquares is now a shallow copy of the squares array. The original array in not touched.
-    nextSquares[i] = "X" // the position i of the nextSquares array is changed from null to the string "X"
-    setSquares(nextSquares) // tells React to change the initial state of position 0 in the squares array to "X" through useState
+    if (xIsNext) { // if xIsNext corresponds to the boolean true...
+      nextSquares[i] = "X" // ...the position i of the nextSquares array is changed from null to the string "X"
+    } else { // if xIsNext does not correspond to the boolean true...
+      nextSquares[i] = "O" // ...the position i of the nextSquares array is changed from null to the string "O"
+    }
+    setSquares(nextSquares); // tells React to change the initial state of position 0 in the squares array to "X" through useState
+    setXIsNext(!xIsNext); // tells React to change the initial state of xIsNext from true to false.
   }
 
   return (
