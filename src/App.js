@@ -1,10 +1,11 @@
 import { useState } from "react";
+// see https://react.dev/reference/react/useState#usestate
 
-function Square({value, onSquareClick}) {
+function Square({value, onSquareClick}) { // the function Square takes value and onSquareClick as parameters
   return <button className="square" onClick={onSquareClick}>
     {value}
     </button>;
-}
+} // the function returns a HTML button element with the class name of Square, which when receving a click in the browser will activate the function "onSquareClick" (declared below). This button element wraps the variable "value".
 
 export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
@@ -15,6 +16,8 @@ export default function Board() {
     nextSquares[0] = "X" // the position 0 of the nextSquares array is changed from null to the string "X"
     setSquares(nextSquares) // tells React to change the initial state of position 0 in the squares array to "X" through useState
   }
+
+// Right now only upper left square can change to X because we included
 
   return (
   <>
