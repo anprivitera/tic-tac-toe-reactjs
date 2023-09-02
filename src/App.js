@@ -8,6 +8,13 @@ function Square({value, onSquareClick}) {
 
 export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
+
+  function handleClick() { // declaring handleClick function
+    const nextSquares = squares.slice(); // nextSquares is now a shallow copy of the squares array
+    nextSquares[0] = "X" // the position 0 of the nextSquares array is now string "X"
+    setSquares(nextSquares) // tells React to rerender the board. (??)
+  }
+
   return (
   <>
     <div className="board-row">
