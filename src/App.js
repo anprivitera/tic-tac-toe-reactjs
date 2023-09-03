@@ -26,12 +26,12 @@ export default function Board() {
     setXIsNext(!xIsNext); // tells React to change the initial state of xIsNext from true to false.
   }
 
-  const winner = calculateWinner(squares);
-  let status;
-  if (winner) {
-    status = 'Winner: ' + winner;
+  const winner = calculateWinner(squares); // the result of the calculateWinner function is assigned to the constant winner (unless very specific conditions apply, the result is null) (FABIO: why const here it it is going to change?)
+  let status; // status is true
+  if (winner) { // if winner is not null
+    status = 'Winner: ' + winner; // return this string
   } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    status = 'Next player: ' + (xIsNext ? 'X' : 'O'); // return this string
   }
 
 
@@ -75,9 +75,9 @@ function calculateWinner(squares) { // a function to decide the winner taking th
   for (let i = 0; i < lines.length; i++) { // for eigtht times (i.e., the elements in the lines array)...
     const [a, b, c] = lines[i]; // ...the function will assign each item of the sub-array found in the position "i" of the "lines" array to "a", "b", "c" in the array declared as constant on the left... (FABIO: why are we declaring this element as a constant if it is going to change in each iteration of the loop? Is it because it is scoped in the block starting on line 66? Still, why not declaring it as a variable?) 
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      // (FABIO: not sure how this works)
-      return squares[a];
+    // if the item a in the squares array is not null and the item a in the squares array is strictly equal to the item b in the array squares and the item a in the squares array is strictly equal to the item c in the squares array (in other words, if in the positions a b and c we have all Xs or Os)... 
+      return squares[a]; // return the symbol that is present in square A
     }
-  }
-  return null;
+  } 
+  return null; // if none of the conditions above is fulfilled, the function returns null
 }
