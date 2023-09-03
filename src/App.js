@@ -13,7 +13,7 @@ export default function Board() {
   // the first element in the array will be the current state of the board, the second ("setSquares") changes the value based on the function setSquares. Through array destructuring, we declare that squares (i.e., the initial state) is an array of 9 items, each one with the value of null.
 
   function handleClick(i) { // declaring handleClick function with parameter i
-    if (squares[i]) { // If the item i in the array squares is true... (note: in node null == true returns false. is that the reason why this works?)
+    if (squares[i] || calculateWinner(squares)) { // If the item i in the array squares is true... (note: in node null == true returns false. is that the reason why this works?)
       return // ...the function ends here.
     }
     const nextSquares = squares.slice(); // nextSquares is now a shallow copy of the squares array. The original array is not touched.
