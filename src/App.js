@@ -13,7 +13,10 @@ export default function Board() {
   // the first element in the array will be the current state of the board, the second ("setSquares") changes the value based on the function setSquares. Through array destructuring, we declare that squares (i.e., the initial state) is an array of 9 items, each one with the value of null.
 
   function handleClick(i) { // declaring handleClick function with parameter i
-    const nextSquares = squares.slice(); // nextSquares is now a shallow copy of the squares array. The original array in not touched.
+    if (squares[i]) { // If the item i in the array squares is true... (FABIO: in node null == true returns false. is that the reason why this works?)
+      return // ...the function ends here.
+    }
+    const nextSquares = squares.slice(); // nextSquares is now a shallow copy of the squares array. The original array is not touched.
     if (xIsNext) { // if xIsNext corresponds to the boolean true...
       nextSquares[i] = "X" // ...the position i of the nextSquares array is changed from null to the string "X"
     } else { // if xIsNext does not correspond to the boolean true...
@@ -21,6 +24,7 @@ export default function Board() {
     }
     setSquares(nextSquares); // tells React to change the initial state of position 0 in the squares array to "X" through useState
     setXIsNext(!xIsNext); // tells React to change the initial state of xIsNext from true to false.
+    // In the current state, 
   }
 
   return (
