@@ -26,7 +26,7 @@ export default function Board() {
     setXIsNext(!xIsNext); // tells React to change the initial state of xIsNext from true to false.
   }
 
-  const winner = calculateWinner(squares); // the result of the calculateWinner function is assigned to the constant winner (unless very specific conditions apply, the result is null) (FABIO: why const here it it is going to change?)
+  const winner = calculateWinner(squares); // the result of the calculateWinner function is assigned to the constant winner (unless very specific conditions apply, the result is null) (FABIO: why const here it it is going to change? The app still runs even with winner declared with let)
   let status; // status is true
   if (winner) { // if winner is not null
     status = 'Winner: ' + winner; // return this string
