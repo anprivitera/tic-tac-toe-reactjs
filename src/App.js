@@ -13,7 +13,7 @@ export default function Board() {
   // the first element in the array will be the current state of the board, the second ("setSquares") changes the value based on the function setSquares. Through array destructuring, we declare that squares (i.e., the initial state) is an array of 9 items, each one with the value of null.
 
   function handleClick(i) { // declaring handleClick function with parameter i
-    if (squares[i]) { // If the item i in the array squares is true... (FABIO: in node null == true returns false. is that the reason why this works?)
+    if (squares[i]) { // If the item i in the array squares is true... (note: in node null == true returns false. is that the reason why this works?)
       return // ...the function ends here.
     }
     const nextSquares = squares.slice(); // nextSquares is now a shallow copy of the squares array. The original array is not touched.
@@ -50,4 +50,25 @@ export default function Board() {
       </div>
     </>
   );
+}
+
+function calculateWinner(squares) { // a function to decide the winner taking the squares element as a property.
+  const lines = [ // an array of arrays containing the positions on the board where all the possible win states in tic-tac-toe can occur.
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+  for (let i = 0; i < lines.length; i++) { // for eigtht times (i.e., the elements in the lines array)...
+    const [a, b, c] = lines[i]; // ...the function will assign each item of the sub-array found in the position "i" of the "lines" array to "a", "b", "c" in the array declared as constant on the left... (FABIO: why are we declaring this element as a constant if it is going to change in each iteration of the loop? Is it because it is scoped in the block starting on line 66? Still, why not declaring it as a variable?) 
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      // (FABIO: not sure how this works)
+      return squares[a];
+    }
+  }
+  return null;
 }
