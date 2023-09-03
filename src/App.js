@@ -24,31 +24,30 @@ export default function Board() {
     }
     setSquares(nextSquares); // tells React to change the initial state of position 0 in the squares array to "X" through useState
     setXIsNext(!xIsNext); // tells React to change the initial state of xIsNext from true to false.
-    // In the current state, 
   }
 
   return (
-  <> 
-  {/* Here we are creating three div elements called board-row. In each of the three board-rows we are adding three React elements generated from the function square to form the tic-tac-toe board. Each element takes one array position as value, and the function handleClick as onSquareClick. 
+    <> 
+    {/* Here we are creating three div elements called board-row. In each of the three board-rows we are adding three React elements generated from the function square to form the tic-tac-toe board. Each element takes one array position as value, and the function handleClick as onSquareClick. 
   
-  On click, each square changes from null to X
-  */}
+    On click, each square changes from null to X
+    */}
   
-    <div className="board-row">
-      <Square value={squares[0]} onSquareClick={() => handleClick(0)} /> 
-      <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-      <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
-    </div>
-    <div className="board-row">
-      <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-      <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-      <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
-    </div>
-    <div className="board-row">
-      <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-      <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-      <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
-    </div>
-  </>
+      <div className="board-row">
+        <Square value={squares[0]} onSquareClick={() => handleClick(0)} /> 
+        <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
+        <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
+      </div>
+      <div className="board-row">
+        <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
+        <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
+        <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
+      </div>
+      <div className="board-row">
+        <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
+        <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
+        <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
+      </div>
+    </>
   );
 }
