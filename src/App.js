@@ -26,13 +26,22 @@ export default function Board() {
     setXIsNext(!xIsNext); // tells React to change the initial state of xIsNext from true to false.
   }
 
+  const winner = calculateWinner(squares);
+  let status;
+  if (winner) {
+    status = 'Winner: ' + winner;
+  } else {
+    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+  }
+
+
   return (
     <> 
     {/* Here we are creating three div elements called board-row. In each of the three board-rows we are adding three React elements generated from the function square to form the tic-tac-toe board. Each element takes one array position as value, and the function handleClick as onSquareClick. 
   
     On click, each square changes from null to X
     */}
-  
+      <div className="status">{status}</div>
       <div className="board-row">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} /> 
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
