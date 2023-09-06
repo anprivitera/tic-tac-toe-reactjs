@@ -10,7 +10,7 @@ function Square({ value, onSquareClick }) {
   );
 } // the function returns a HTML button element with the class name of Square, which when receving a click in the browser will activate the function "onSquareClick" (declared below). This button element wraps the variable "value".
 
-function Board() {
+function Board(xIsNext, squares, onPlay) {
   // Removed export devault from the board. this is not the top level component anymore in in index.js
   const [xIsNext, setXIsNext] = useState(true); // the first element in the array will be the current state, the second alter the state. The initial state is the boolean true.
   const [squares, setSquares] = useState(Array(9).fill(null));
