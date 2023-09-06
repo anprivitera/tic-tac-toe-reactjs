@@ -10,12 +10,7 @@ function Square({ value, onSquareClick }) {
   );
 } // the function returns a HTML button element with the class name of Square, which when receving a click in the browser will activate the function "onSquareClick" (declared below). This button element wraps the variable "value".
 
-function Board() {
-  // Removed export devault from the board. this is not the top level component anymore in in index.js
-  const [xIsNext, setXIsNext] = useState(true); // the first element in the array will be the current state, the second alter the state. The initial state is the boolean true.
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  // the first element in the array will be the current state of the board, the second ("setSquares") changes the value based on the function setSquares. Through array destructuring, we declare that squares (i.e., the initial state) is an array of 9 items, each one with the value of null.
-
+function Board(xIsNext, squares, onPlay) {
   function handleClick(i) {
     // declaring handleClick function with parameter i
     if (squares[i] || calculateWinner(squares)) {
@@ -23,6 +18,7 @@ function Board() {
       return; // ...the function ends here.
     }
     const nextSquares = squares.slice(); // nextSquares is now a shallow copy of the squares array. The original array is not touched.
+    //FABIO: In the current state of the code, I get "squares.slice is not a function..."
     if (xIsNext) {
       // if xIsNext corresponds to the boolean true...
       nextSquares[i] = "X"; // ...the position i of the nextSquares array is changed from null to the string "X"
@@ -30,8 +26,7 @@ function Board() {
       // if xIsNext does not correspond to the boolean true...
       nextSquares[i] = "O"; // ...the position i of the nextSquares array is changed from null to the string "O"
     }
-    setSquares(nextSquares); // tells React to change the initial state of position 0 in the squares array to "X" through useState
-    setXIsNext(!xIsNext); // tells React to change the initial state of xIsNext from true to false.
+    onPlay(nextSquares); // FABIO: the previous calls "setSquares" and "setXIsNext" are now being handled in the <Board /> component inside of the "Game" default function, so that we can simultaneously upodate the state of the board and keep track of changes. Am I getting it right?
   }
 
   const winner = calculateWinner(squares); // the result of the calculateWinner function is assigned to the constant winner (unless very specific conditions apply, the result is null) (FABIO: why const here it it is going to change? The app still runs even with winner declared with let)
@@ -70,14 +65,18 @@ function Board() {
 }
 
 export default function Game() {
-  //creating the HTML elements that show the game history. This is now the top level component in index.js
-  const [isXNext, setXIsNext] = useState(true); //the first element in the left array will be the current state, the second alter the state. The initial state is the boolean true. I suppose this will keep track of each player's history.
-  const [history, setHistory] = useState([Array(9).fill(null)]); // the first element in the left array will be the current state, the second alter the state. The initial state is a single-item array, in which that single item is an array of 9 items filled as null. This will keep track of the positions on the board
+  const [xIsNext, setXIsNext] = useState(true);
+  const [history, setHistory] = useState([Array(9).fill(null)]);
   const currentSquares = history[history.length - 1]; // the constant currentSquares is declared as the position 0 in the array inside the array history. FABIO: is that correct?
+  function handlePlay(nextSquares) {
+    setHistory([...history, nextSquares]); //the function setHistory takes as arguments the enumeration of the array history and nextSquares (again, a shallow copy of the squares array). I suppose this function will handle the old states of the game as a series of arrays and the current state as also an array.
+    setXIsNext(!xIsNext); //the function setXIsNext takes as an argument the opposite of xISNext?
+  }
   return (
+    //creating the HTML elements that show the game history. This is now the top level component in index.js
     <div className="game">
       <div className="game-board">
-        <Board />{" "}
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />{" "}
         {/*The board is still present here, hence the App keeps working*/}
       </div>
       <div className="game info">
