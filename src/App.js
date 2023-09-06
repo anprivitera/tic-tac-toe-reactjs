@@ -69,9 +69,9 @@ function Board() {
   );
 }
 
-export default function Game(isXNext, squares, onPlay) {
+export default function Game(isXNext, squares, handle) {
   //creating the HTML elements that show the game history. This is now the top level component in index.js
-  const [, setXIsNext] = useState(true); //the first element in the left array will be the current state, the second alter the state. The initial state is the boolean true. I suppose this will keep track of each player's history.
+  const [isXNext, setXIsNext] = useState(true); //the first element in the left array will be the current state, the second alter the state. The initial state is the boolean true. I suppose this will keep track of each player's history.
   const [history, setHistory] = useState([Array(9).fill(null)]); // the first element in the left array will be the current state, the second alter the state. The initial state is a single-item array, in which that single item is an array of 9 items filled as null. This will keep track of the positions on the board
   const currentSquares = history[history.length - 1]; // the constant currentSquares is declared as the position 0 in the array inside the array history. FABIO: is that correct?
   function handlePlay(nextSquares) {
