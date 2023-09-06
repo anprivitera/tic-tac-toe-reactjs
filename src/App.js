@@ -30,8 +30,7 @@ function Board() {
       // if xIsNext does not correspond to the boolean true...
       nextSquares[i] = "O"; // ...the position i of the nextSquares array is changed from null to the string "O"
     }
-    setSquares(nextSquares); // tells React to change the initial state of position 0 in the squares array to "X" through useState
-    setXIsNext(!xIsNext); // tells React to change the initial state of xIsNext from true to false.
+    onPlay(nextSquares); // FABIO: the previous calls "setSquares" and "setXIsNext" are now being handled in the <Board /> component inside of the "Game" default function, so that we can simultaneously upodate the state of the board and keep track of changes. Am I getting it right?
   }
 
   const winner = calculateWinner(squares); // the result of the calculateWinner function is assigned to the constant winner (unless very specific conditions apply, the result is null) (FABIO: why const here it it is going to change? The app still runs even with winner declared with let)
@@ -71,8 +70,6 @@ function Board() {
 
 export default function Game(isXNext, squares, handle) {
   //creating the HTML elements that show the game history. This is now the top level component in index.js
-  const [isXNext, setXIsNext] = useState(true); //the first element in the left array will be the current state, the second alter the state. The initial state is the boolean true. I suppose this will keep track of each player's history.
-  const [history, setHistory] = useState([Array(9).fill(null)]); // the first element in the left array will be the current state, the second alter the state. The initial state is a single-item array, in which that single item is an array of 9 items filled as null. This will keep track of the positions on the board
   const currentSquares = history[history.length - 1]; // the constant currentSquares is declared as the position 0 in the array inside the array history. FABIO: is that correct?
   function handlePlay(nextSquares) {
     //TODO
