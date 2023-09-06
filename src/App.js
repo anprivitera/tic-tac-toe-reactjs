@@ -72,7 +72,8 @@ export default function Game(isXNext, squares, handle) {
   //creating the HTML elements that show the game history. This is now the top level component in index.js
   const currentSquares = history[history.length - 1]; // the constant currentSquares is declared as the position 0 in the array inside the array history. FABIO: is that correct?
   function handlePlay(nextSquares) {
-    //TODO
+    setHistory([...history, nextSquares]); //the function setHistory takes as arguments the enumeration of the array history and nextSquares (again, a shallow copy of the squares array). I suppose this function will handle the old states of the game as a series of arrays and the current state as also an array.
+    setXIsNext(!xIsNext); //the function setXIsNext takes as an argument the opposite of xISNext?
   }
   return (
     <div className="game">
