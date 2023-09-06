@@ -71,6 +71,8 @@ function Board() {
 
 export default function Game() {
   //creating the HTML elements that show the game history. This is now the top level component in index.js
+  const [isXNext, setXIsNext] = useState(true); //the first element in the left array will be the current state, the second alter the state. The initial state is the boolean true. I suppose this will keep track of each player's history.
+  const [history, setHistory] = useState([Array(9).fill(null)]); // the first element in the left array will be the current state, the second alter the state. The initial state is a single-item array, in which that single item is an array of 9 items filled as null. This will keep track of the positions on the board
   return (
     <div className="game">
       <div className="game-board">
