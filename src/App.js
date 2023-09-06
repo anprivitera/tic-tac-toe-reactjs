@@ -74,7 +74,8 @@ export default function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        <Board />
+        <Board />{" "}
+        {/*The board is still present here, hence the App keeps working*/}
       </div>
       <div className="game info">
         <ol>{/*TODO*/}</ol>
