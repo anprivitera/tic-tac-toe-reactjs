@@ -65,6 +65,7 @@ function Board(xIsNext, squares, onPlay) {
 }
 
 export default function Game() {
+  //This is now the top level component in index.js
   const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const currentSquares = history[history.length - 1]; // the constant currentSquares is declared as the position 0 in the array inside the array history. FABIO: is that correct?
@@ -73,7 +74,7 @@ export default function Game() {
     setXIsNext(!xIsNext); //the function setXIsNext takes as an argument the opposite of xISNext?
   }
   return (
-    //creating the HTML elements that show the game history. This is now the top level component in index.js
+    //creating the HTML elements that show the game history.
     <div className="game">
       <div className="game-board">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />{" "}
