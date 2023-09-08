@@ -66,7 +66,6 @@ function Board({ xIsNext, squares, onPlay }) {
 
 export default function Game() {
   //This is now the top level component in index.js
-  const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
   const xIsNext = currentMove % 2 === 0; // FABIO: the function setXIsNext takes the remainder of nextMove divided by two IF it is equal and the same type of data as 0? Not too sure about this
