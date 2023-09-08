@@ -68,6 +68,7 @@ export default function Game() {
   //This is now the top level component in index.js
   const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([Array(9).fill(null)]);
+  const [currentMove, setCurrentMove] = useState(0);
   const currentSquares = history[history.length - 1]; // the constant currentSquares is declared as the position 0 in the array inside the array history. FABIO: is that correct?
   function handlePlay(nextSquares) {
     setHistory([...history, nextSquares]); //the function setHistory takes as arguments the enumeration of the array history and nextSquares (again, a shallow copy of the squares array). I suppose this function will handle the old states of the game as a series of arrays and the current state as also an array.
