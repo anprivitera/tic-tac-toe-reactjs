@@ -69,18 +69,16 @@ export default function Game() {
   const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
+  const xIsNext = currentMove % 2 === 0; // FABIO: the function setXIsNext takes the remainder of nextMove divided by two IF it is equal and the same type of data as 0? Not too sure about this
   const currentSquares = history[currentMove]; // currentSquares is now the position "currentMove" in the array History
   function handlePlay(nextSquares) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares]; // the constant nextHistory is an array containing a shallow copy of the enumeration of the array history sliced between position 0 and currentmove+1, AND nextSquares
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
-
-    setXIsNext(!xIsNext); //the function setXIsNext takes as an argument the opposite of xISNext?
   }
 
   function jumpTo(nextMove) {
     setCurrentMove(nextMove); // the function setCurrentMove takes nextMove as a parameter
-    setXIsNext(nextMove % 2 === 0); // FABIO: the function setXIsNext takes the remainder of nextMove divided by two IF it is equal and the same type of data as 0? Not too sure about this.
   }
 
   const moves = history.map((squares, move) => {
