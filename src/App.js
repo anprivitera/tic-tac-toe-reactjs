@@ -69,7 +69,7 @@ export default function Game() {
   const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
-  const currentSquares = history[history.length - 1]; // the constant currentSquares is declared as the position 0 in the array inside the array history. FABIO: is that correct?
+  const currentSquares = history[currentMove]; // currentSquares is now the position "currentMove" in the array History
   function handlePlay(nextSquares) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares]; // the constant nextHistory is an array containing a shallow copy of the enumeration of the array history sliced between position 0 and currentmove+1, AND nextSquares
     setHistory(nextHistory);
