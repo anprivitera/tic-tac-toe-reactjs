@@ -79,6 +79,7 @@ export default function Game() {
   }
 
   const moves = history.map((squares, move) => {
+    // What is the purpose of the argument "squares" in this function?
     let description;
     if (move > 0) {
       description = "Go to move #" + move;
@@ -86,7 +87,7 @@ export default function Game() {
       description = "Go to game start";
     }
     return (
-      <li>
+      <li key={move}>
         <button onClick={() => jumpTo(move)}>{description}</button>
       </li>
     );
