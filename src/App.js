@@ -71,7 +71,8 @@ export default function Game() {
   const [currentMove, setCurrentMove] = useState(0);
   const currentSquares = history[history.length - 1]; // the constant currentSquares is declared as the position 0 in the array inside the array history. FABIO: is that correct?
   function handlePlay(nextSquares) {
-    setHistory([...history, nextSquares]); //the function setHistory takes as arguments the enumeration of the array history and nextSquares (again, a shallow copy of the squares array). I suppose this function will handle the old states of the game as a series of arrays and the current state as also an array.
+    setHistory([...history.slice(0, currentMove + 1), nextSquares]); //the function setHistory takes as arguments the enumeration of the array history and nextSquares (again, a shallow copy of the squares array). I suppose this function will handle the old states of the game as a series of arrays and the current state as also an array.
+    // With the change in this commit, a shallow copy of the history array is created which starts from position 0 and goes up to currentMove + 1, excluding subsequent moves if "travelling back in time"
     setXIsNext(!xIsNext); //the function setXIsNext takes as an argument the opposite of xISNext?
   }
 
