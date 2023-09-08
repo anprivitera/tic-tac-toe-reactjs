@@ -76,7 +76,8 @@ export default function Game() {
   }
 
   function jumpTo(nextMove) {
-    // TODO
+    setCurrentMove(nextMove); // the function setCurrentMove takes nextMove as a parameter
+    setXIsNext(nextMove % 2 === 0); // FABIO: the function setXIsNext takes the remainder of nextMove divided by two IF it is equal and the same type of data as 0? Not too sure about this.
   }
 
   const moves = history.map((squares, move) => {
