@@ -10,7 +10,7 @@ function Square({ value, onSquareClick }) {
   );
 } // the function returns a HTML button element with the class name of Square, which when receving a click in the browser will activate the function "onSquareClick" (declared below). This button element wraps the variable "value".
 
-function Board(xIsNext, squares, onPlay) {
+function Board({ xIsNext, squares, onPlay }) {
   function handleClick(i) {
     // declaring handleClick function with parameter i
     if (squares[i] || calculateWinner(squares)) {
@@ -18,7 +18,7 @@ function Board(xIsNext, squares, onPlay) {
       return; // ...the function ends here.
     }
     const nextSquares = squares.slice(); // nextSquares is now a shallow copy of the squares array. The original array is not touched.
-    //FABIO: In the current state of the code, I get "squares.slice is not a function..."
+    //~~FABIO: In the current state of the code, I get "squares.slice is not a function..."~~ > I forgot to add {} in the function arguments. Is it because they are React elements?
     if (xIsNext) {
       // if xIsNext corresponds to the boolean true...
       nextSquares[i] = "X"; // ...the position i of the nextSquares array is changed from null to the string "X"
@@ -73,6 +73,25 @@ export default function Game() {
     setHistory([...history, nextSquares]); //the function setHistory takes as arguments the enumeration of the array history and nextSquares (again, a shallow copy of the squares array). I suppose this function will handle the old states of the game as a series of arrays and the current state as also an array.
     setXIsNext(!xIsNext); //the function setXIsNext takes as an argument the opposite of xISNext?
   }
+
+  function jumpTo(nextMove) {
+    // TODO
+  }
+
+  const moves = history.map((squares, move) => {
+    let description;
+    if (move > 0) {
+      description = "Go to move #" + move;
+    } else {
+      description = "Go to game start";
+    }
+    return (
+      <li>
+        <button onClick={() => jumpTo(move)}>{description}</button>
+      </li>
+    );
+  });
+
   return (
     //creating the HTML elements that show the game history.
     <div className="game">
@@ -81,7 +100,7 @@ export default function Game() {
         {/*The board is still present here, hence the App keeps working*/}
       </div>
       <div className="game info">
-        <ol>{/*TODO*/}</ol>
+        <ol>{moves}</ol>
       </div>
     </div>
   );
